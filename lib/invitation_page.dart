@@ -1,8 +1,10 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'theme.dart';
 import 'name_dialog.dart';
 import 'thank_you_page.dart';
+import 'config.dart';
 
 class InvitationPage extends StatefulWidget {
   const InvitationPage({super.key});
@@ -78,12 +80,22 @@ class _InvitationPageState extends State<InvitationPage> {
     });
   }
 
+  bool _recorded = false;
+
+  void _recordRsvp(String name) {
+    if (_recorded) return;
+    if (rsvpSheetUrl == 'YOUR_APPS_SCRIPT_URL_HERE') return;
+    _recorded = true;
+    http.get(Uri.parse('$rsvpSheetUrl?name=${Uri.encodeComponent(name)}'));
+  }
+
   void _onYesTap() {
     showDialog(
       context: context,
       barrierDismissible: true,
       builder: (_) => NameDialog(
         onSelected: (name) {
+          _recordRsvp(name);
           Navigator.of(context).push(PageRouteBuilder(
             pageBuilder: (_, _, _) => ThankYouPage(name: name),
             transitionsBuilder: (_, anim, _, child) =>
@@ -155,7 +167,7 @@ class _InvitationPageState extends State<InvitationPage> {
               _rule(),
               const SizedBox(height: 14),
               Text(
-                'Mr. & Mrs. MD Kamran sb.\n(Retd. APP, Advocate on Record, Patna High Court)\nand Ghazala Khanam',
+                'Mr. & Mrs. Md. Kamran sb.\n(Retd. APP, Advocate on Record, Patna High Court)\nand Ghazala Khanam',
                 style: cormorant(size: 15, color: ivoryDim),
                 textAlign: TextAlign.center,
               ),
@@ -166,7 +178,7 @@ class _InvitationPageState extends State<InvitationPage> {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 18),
-              Text('MD Zeeshan Haider',
+              Text('Md. Zeeshan Haider',
                   style: cinzel(size: 26, color: goldSoft, weight: FontWeight.w600, spacing: 0.5)),
               Text('with', style: tangerine(size: 32, color: ivory)),
               Text('Zubia Samreen',
