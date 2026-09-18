@@ -9,7 +9,7 @@ const _guestsSource = [
   'Tikesh', 'Rachit', 'Nanni', 'Shubham - GGN',
   'Shabnam', 'Ritzi', 'Richaaa', 'Harsh', 'Sakshi',
   'Aarti', 'Prabha', 'Sneha', 'Bhagat', 'Sid', 'Shubham - CCDS',
-  'Shaswat', 'Mayank',
+  'Shaswat', 'Mayank', 'Anirban', 'Rishi', 'Ananya', 'Ujjawal', 'Akansha', 'Shaheen',
 ];
 
 class NameDialog extends StatefulWidget {
