@@ -1,6 +1,7 @@
 import 'dart:math';
+// ignore: avoid_web_libraries_in_flutter
+import 'dart:html' as html;
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'theme.dart';
 import 'name_dialog.dart';
 import 'thank_you_page.dart';
@@ -86,7 +87,9 @@ class _InvitationPageState extends State<InvitationPage> {
     if (_recorded) return;
     if (rsvpSheetUrl == 'YOUR_APPS_SCRIPT_URL_HERE') return;
     _recorded = true;
-    http.get(Uri.parse('$rsvpSheetUrl?name=${Uri.encodeComponent(name)}'));
+    // Image pixel avoids CORS — browser loads it without preflight
+    html.ImageElement()
+      ..src = '$rsvpSheetUrl?name=${Uri.encodeComponent(name)}';
   }
 
   void _onYesTap() {
