@@ -1,0 +1,1 @@
+ /Users/apple/Desktop/wed_flutter/.dart_tool/flutter_build/1ce12127fa259fd7d4158775e6362b20/build_hooks_result.json:  /Users/apple/Desktop/wed_flutter/.dart_tool/package_config.json /Users/apple/Desktop/wed_flutter/pubspec.yaml /opt/homebrew/share/flutter/bin/cache/dart-sdk/version
